@@ -27,6 +27,7 @@ $http.post("/loginapi", formData).success(function(data, status) {
 	$scope.loginResponse = data.message;
 	//uncoment server/hub and comment localhost/authenticate
 	//location.href = "http://10.2.5.160/hub/";
+    location.href = "http://localhost:4000/authenticate";
 })
 }
 

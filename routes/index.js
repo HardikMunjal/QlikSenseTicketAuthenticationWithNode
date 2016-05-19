@@ -1,6 +1,7 @@
 module.exports = function (app) {
 
 //https://community.qlik.com/thread/160788
+ var qlikauth = require('qlik-auth');
 
  app.get('/', function(req, res, next) {
 			    res.render('login/login.html');
@@ -17,7 +18,7 @@ module.exports = function (app) {
 	   }
 
 	res.json(result);
-});
+    });
 
 	app.post('/loginapi', function(req, res, next) {
 
@@ -53,8 +54,9 @@ module.exports = function (app) {
 			    'Attributes': [{'Group': 'ExampleGroup'}]
 			  }
 
-	  //Make call for ticket request
-	  qlikauth.requestTicket(req, res, profile);
+			  //Make call for ticket request
+			  //qlikauth.requestTicket(req, res, profile);
+			  res.render('index.html');
 		});
 
  };

@@ -28,7 +28,7 @@
 <!-- define angular controller -->
 <body style="background-color:#000000" ng-controller="sessionController">
 
-<div ng-if="$root.noSession">
+<!-- <div ng-if="$root.noSession">
    <login-template></login-template>
    <div class="col-md-6 col-md-offset-3">
      <div id="main">
@@ -39,12 +39,41 @@
 
 <div ng-if="$root.session">
 <global-view></global-view>
+</div> -->
+  <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">HCL Visual</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+    </ul>
+     <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+       <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
+<div>
+<div class="col-md-2">
+  <ul class="nav nav-pills nav-stacked">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">CPT</a></li>
+    <li><a href="#">Sales Bonus</a></li>
+    <li><a href="#">Visual</a></li>
+  </ul>
 </div>
-  
+    <div class="embed-responsive embed-responsive-12by9">
+   <iframe class="col-lg-10 col-md-12 col-sm-12" src="http://10.2.5.160/single/?appid=1ae70672-08b2-47d1-8ce8-378227a73715&obj=fKwwfmr
+" height="500"></iframe>
+</div>
+
+</div>
+
   
   <footer class="text-center">
     <br>
-    <p>Frontend framework designed by hardi</a></p>
+    <p>hcl dev</p>
   </footer>
   
 </body>
