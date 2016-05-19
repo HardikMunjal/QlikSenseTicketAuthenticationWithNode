@@ -3,8 +3,15 @@ var app = express();
 var router = express.Router();
 
 //app.set('view engine', 'jade');
+var bodyParser = require('body-parser');
+app.use(bodyParser.json({ 
+ 	limit: '10mb' 
+    })); 
+
 app.use(router);
 require('./routes')(router);
+
+
 
 app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/public/views');

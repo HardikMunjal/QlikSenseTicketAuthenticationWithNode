@@ -24,13 +24,13 @@
                     <h3 class="panel-title">HCL LOGIN</h3>
                 </div>
                 <div class="panel-body">
-                    <form accept-charset="UTF-8" role="form">
+                    <form accept-charset="UTF-8" role="form" ng-submit="myFunc()">
                     <fieldset>
                         <div class="form-group">
-                            <input class="form-control" placeholder="yourmail@example.com" name="email" type="text">
+                            <input class="form-control" placeholder="username" name="Username" type="text" ng-model="username">
                         </div>
                         <div class="form-group">
-                            <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                            <input class="form-control" placeholder="Password" name="password" type="password" value="" ng-model="password">
                         </div>
                         <div class="checkbox">
                             <label>
@@ -40,9 +40,15 @@
                         <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
                     </fieldset>
                     </form>
-<div>
- Full Name: {{firstName + " " + lastName}}
- </div>
+                    <div>
+                    {{myTxt}}
+                     Full Name: {{firstName + " " + lastName}}
+                     {{myWelcome}}
+                     {{loginResponse}}
+                     </div>
+                     <iframe class="col-lg-10 col-md-12 col-sm-12" src="http://10.2.5.160/single/?appid=1ae70672-08b2-47d1-8ce8-378227a73715&obj=fKwwfmr
+" height="500"></iframe>
+<iframe src="http://localhost:4848/single?appid=D%3A%5CUsers%5Cqlikdeveloper5%5CDocuments%5CQlik%5CSense%5CApps%5CAngularHelloExtension.qvf&obj=MxeLXY"></iframe>
 
 
                   <!--    <iframe src="http://10.2.5.160/sense/app/1ae70672-08b2-47d1-8ce8-378227a73715/sheet/XZvfWm/state/analysis?qlikTicket=zxXHPHsgl3_Cu8ht" width="800" height="400"></iframe> 
