@@ -1,4 +1,5 @@
 Frontend Framework Designed By Hardik Munjaal
+https://community.qlik.com/docs/DOC-8159
 
 This is just a minimal example to demonstrate how simple it is to use the
   module. The code below is from the Node.js website demonstrating how to run
