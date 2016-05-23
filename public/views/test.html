@@ -1,0 +1,21 @@
+angular.module('myApp', [])
+    .controller('dummy', ['$scope', '$sce', function ($scope, $sce) {
+
+    $scope.url = $sce.trustAsResourceUrl('https://www.angularjs.org');
+        
+    $scope.changeIt = function () {
+        $scope.url = $sce.trustAsResourceUrl('https://docs.angularjs.org/tutorial');
+    }
+}]);
+
+
+<div ng-app="myApp" ng-controller="dummy">
+    <button ng-click="changeIt()">Change it</button>
+    <iframe ng-src="{{url}}" width="300" height="600"></iframe>
+</div>
+
+
+    var str1 = "http://ghgh.com";
+    var str2 = "?";
+    var str3 = "ticket=6t76vghgjh";
+    var res = str1.concat(str2, str3);
