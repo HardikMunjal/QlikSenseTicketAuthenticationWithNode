@@ -7,6 +7,11 @@ app.get('/', function(req, res, next) {
 	res.render('login/login.html');
 });
 
+app.get('/ticket', function(req, res, next) {
+    console.log(req.session);
+	res.json(req.session);
+});
+
 
 app.get('/loginapi', function(req, res, next) {
 

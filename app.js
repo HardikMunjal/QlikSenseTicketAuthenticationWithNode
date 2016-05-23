@@ -4,9 +4,24 @@ var router = express.Router();
 
 //app.set('view engine', 'jade');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var expressSession = require('express-session');
 app.use(bodyParser.json({ 
  	limit: '10mb' 
     })); 
+
+app.use(cookieParser());
+app.use(expressSession({
+	secret:'secret',
+	resave: false,
+   saveUninitialized: true,
+  cookie: { 
+  	 maxAge: 600000, 
+ //  	secure: true ,
+     httpOnly: false, // key
+ //    maxAge: null
+   }
+}));
 
 app.use(router);
 require('./routes')(router);
