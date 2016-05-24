@@ -1,18 +1,25 @@
-var app = angular.module('myApp',  ['ngLoadingSpinner']);
+var app = angular.module('myApp',  []);
 app.controller('myCtrl', function($scope, $http) {
 	$scope.firstName  = "Hardik";
 	$scope.lastName = "Munjal";
-    $scope.data.dataLoading = true;
 
-    function sleep(miliseconds) {
+    $scope.$emit('LOAD')
+        $http.jsonp('http://filltext.com/?rows=10&delay=5&fname={firstName}&callback=JSON_CALLBACK')
+        .success(function(data){
+           //  x(20000);
+           // $scope.$emit('UNLOAD')
+        })
+    
+    var x= function sleep(miliseconds) {
    var currentTime = new Date().getTime();
 
    while (currentTime + miliseconds >= new Date().getTime()) {
-    $scope.data.dataLoading = false;
+   
+            
    }
 }
 
-sleep(20000);
+// x(20000);
 
 
 	$scope.myFunc = function () {
@@ -44,3 +51,24 @@ sleep(20000);
 }
 
 });
+
+ app.controller('appController',['$scope','$timeout',function($scope,$timeout){
+    // $scope.counter = 50;
+    // $scope.onTimeout = function(){
+    //     $scope.counter--;
+    //     mytimeout = $timeout($scope.onTimeout,1000);
+    // }
+    // var mytimeout = $timeout($scope.onTimeout,1000);
+    
+          $scope.counter = 45;
+    $scope.onTimeout = function(){
+        $scope.counter--;
+        mytimeout = $timeout($scope.onTimeout,1000);
+        if($scope.counter==0){$scope.$emit('UNLOAD')}
+    }
+    var mytimeout = $timeout($scope.onTimeout,1000);
+            //x(20000);
+          // $scope.$emit('UNLOAD')
+        $scope.$on('LOAD',function(){$scope.loading=true});
+        $scope.$on('UNLOAD',function(){$scope.loading=false});
+    }])
