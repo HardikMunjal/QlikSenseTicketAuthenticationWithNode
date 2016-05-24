@@ -1,7 +1,19 @@
-var app = angular.module('myApp',  []);
+var app = angular.module('myApp',  ['ngLoadingSpinner']);
 app.controller('myCtrl', function($scope, $http) {
 	$scope.firstName  = "Hardik";
 	$scope.lastName = "Munjal";
+    $scope.data.dataLoading = true;
+
+    function sleep(miliseconds) {
+   var currentTime = new Date().getTime();
+
+   while (currentTime + miliseconds >= new Date().getTime()) {
+    $scope.data.dataLoading = false;
+   }
+}
+
+sleep(20000);
+
 
 	$scope.myFunc = function () {
 		$scope.myTxt = "You clicked submit!";
@@ -18,13 +30,17 @@ app.controller('myCtrl', function($scope, $http) {
      formData.username = $scope.username;
      formData.password = $scope.password;
 
-
-// $http.post("/loginapi", formData).success(function(data, status) {
-// 	$scope.loginResponse = data.message;
-// 	//uncoment server/hub and comment localhost/authenticate
+ $http.post("/loginapi", formData).success(function(data, status) {
+ 	$scope.loginResponse = data.message;
+ 	//uncoment server/hub and comment localhost/authenticate'
+    console.log('data',data.message);
+     if(data.message=='success'){
      location.href = "http://10.2.5.160/hclnode/single?appid=ec09cfab-eea7-4841-a8f2-7b007a5f47fc&obj=JvjzhN&opt=nointeraction&select=clearall";
-    // location.href = "http://localhost:4000/halfauthenticate";
-// })
+    
+    }
+    // else
+    // { location.href = "http://localhost:4000/";}
+ })
 }
 
 });

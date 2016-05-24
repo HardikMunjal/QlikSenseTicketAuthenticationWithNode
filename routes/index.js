@@ -21,30 +21,33 @@ app.get('/ticket', function(req, res, next) {
 });
 
 
-app.get('/loginapi', function(req, res, next) {
+// app.get('/loginapi', function(req, res, next) {
 
-  console.log(req.headers.origin);
-	var result=
-	{ "name" : "mohit",
-	"password" : "password4",
-	"profession" : "teacher",
-	"id": 4
-    }
+//   console.log(req.headers.origin);
+// 	var result=
+// 	{ "name" : "mohit",
+// 	"password" : "password4",
+// 	"profession" : "teacher",
+// 	"id": 4
+//     }
 
-res.json(result);
-});
+// res.json(result);
+// });
 
 app.post('/loginapi', function(req, res, next) {
 
 
-  console.log(req.body);
-  if(req.body.username=='qlikdeveloper5' && req.body.password=='123'){
+  console.log('body',req.body);
 
-	var result=  {  
-		 			"message" : "success",
-					"username" : "qlikdeveloper5",
-					"id": 4123
-				 }
+  console.log(req.body.password);
+  if(req.body.password=='123'){
+
+
+    req.session.username = req.body.username;
+
+    console.log(req.session);
+
+	var result=  {"message" : "success"}
 
 	res.json(result);
 	console.log('nice bro');
@@ -53,11 +56,7 @@ app.post('/loginapi', function(req, res, next) {
 
 	}else{
 
-	 var result={
-					"message" : "reject",
-					"username" : "qlikdeveloper5",
-					"id": 4123
-				}
+	 var result=  {"message" : "reject"}
 
 	res.json(result);
 	console.log('bad bro');
@@ -72,7 +71,33 @@ app.get('/halfauthenticate', function(req, res, next) {
     res.render('index.html');
   });
 
+app.get('/logout', function(req, res, next) {
+
+     console.log('deleating' ,req.session);
+     delete req.session;
+     console.log(req.session);
+     res.render('login/login.html');
+  });
+
 app.get('/authenticate', function(req, res, next) {
+
+
+	
+	var profile = {
+		'UserDirectory': 'ASSOCIATES'
+		// ,
+		// 'Attributes': [{'Group': 'ExampleGroup'}]
+	 }
+	 profile.UserId = req.session.username;
+    console.log('coming to authenticate');
+    console.log(profile);
+
+    //Make call for ticket request
+	qlikauth.requestTicket(req, res, profile);
+	//res.render('index.html');
+  });
+
+app.get('/delete', function(req, res, next) {
 
 
 	
@@ -85,9 +110,10 @@ app.get('/authenticate', function(req, res, next) {
     console.log('coming to authenticate');
 
     //Make call for ticket request
-	qlikauth.requestTicket(req, res, profile);
+	qlikauth.getSessionId(req, res, profile);
 	//res.render('index.html');
   });
+
 
 
 app.get('/page', function(req, res, next) {

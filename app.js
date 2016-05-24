@@ -24,7 +24,7 @@ app.use(expressSession({
 	resave: false,
    saveUninitialized: true,
   cookie: { 
-  	 maxAge: 600000, 
+  	 maxAge: 45000, 
  //  	secure: true ,
      httpOnly: false, // key
  //    maxAge: null
