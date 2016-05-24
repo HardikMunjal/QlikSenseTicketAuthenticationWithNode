@@ -3,6 +3,14 @@ module.exports = function (app) {
 //https://community.qlik.com/thread/160788
 var qlikauth = require('qlik-auth');
 
+app.all('/*', function(req, res, next) {
+ res.header('Access-Control-Allow-Origin', req.headers.origin); 
+     res.header('Access-Control-Allow-Credentials', true); 
+     res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS,PUT'); 
+     res.header('Access-Control-Allow-Headers', 'Content-Type'); 
+  next();
+});
+
 app.get('/', function(req, res, next) {
 	res.render('login/login.html');
 });
@@ -59,11 +67,18 @@ app.post('/loginapi', function(req, res, next) {
 
 
 
+app.get('/halfauthenticate', function(req, res, next) {
+
+    res.render('index.html');
+  });
+
 app.get('/authenticate', function(req, res, next) {
+
+
 	
 	var profile = {
 		'UserDirectory': 'ASSOCIATES', 
-		'UserId': 'qlikdeveloper5'
+		'UserId': 'qlikdeveloper4'
 		// ,
 		// 'Attributes': [{'Group': 'ExampleGroup'}]
 	 }
@@ -71,13 +86,11 @@ app.get('/authenticate', function(req, res, next) {
 
     //Make call for ticket request
 	qlikauth.requestTicket(req, res, profile);
-	res.render('index.html');
+	//res.render('index.html');
   });
 
 
 app.get('/page', function(req, res, next) {
-	
-	
 	res.render('index.html');
   });
 };

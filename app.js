@@ -4,8 +4,16 @@ var router = express.Router();
 
 //app.set('view engine', 'jade');
 var bodyParser = require('body-parser');
+
 var cookieParser = require('cookie-parser');
 var expressSession = require('express-session');
+
+app.use(require('./routes/corsheaders'));
+    // res.header('Access-Control-Allow-Origin', req.headers.origin); 
+    //  res.header('Access-Control-Allow-Credentials', true); 
+    //  res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS,PUT'); 
+    //  res.header('Access-Control-Allow-Headers', 'Content-Type'); 
+
 app.use(bodyParser.json({ 
  	limit: '10mb' 
     })); 
