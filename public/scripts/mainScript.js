@@ -5,20 +5,12 @@ app.controller('visualCtrl', function($scope, $http, $sce) {
     $scope.myWelcome='';
 
 
-    
-    // $scope.myFunc = function () {
-    //     $scope.myTxt = "You clicked submit!";
-
     console.log('coming here');
-
     var q=Math.random(); 
-
-
     $http.get("http://localhost:4000/ticket?q="+q)
     .then(function(response) {
 
         console.log(response.data.ticket.redirect);
-        
         $scope.usernamex = response.data.ticket.UserId;
 
     //var u1 = "http://10.2.5.160/hclnode/single?appid=ec09cfab-eea7-4841-a8f2-7b007a5f47fc&obj=jZJSMec&opt=nointeraction&select=clearall";
@@ -56,21 +48,11 @@ app.controller('visualCtrl', function($scope, $http, $sce) {
     formData.username = $scope.username;
     formData.password = $scope.password;
 
-
-// $http.post("/loginapi", formData).success(function(data, status) {
-//  $scope.loginResponse = data.message;
-//  //uncoment server/hub and comment localhost/authenticate
-//  //location.href = "http://10.2.5.160/hclnode/single?appid=ec09cfab-eea7-4841-a8f2-7b007a5f47fc&obj=JvjzhN&opt=nointeraction&select=clearall";
-    // location.href = "http://localhost:4000/halfauthenticate";
-// })
- //}
  $scope.loadmore = function () {
 
     console.log('coming at loadmore');
     var u2= "http://10.2.5.160/hclnode/single?appid=ec09cfab-eea7-4841-a8f2-7b007a5f47fc&obj=JvjzhN&opt=nointeraction&select=clearall";
     var u3="http://10.2.5.160/hclnode/single?appid=ec09cfab-eea7-4841-a8f2-7b007a5f47fc&obj=SsJXfkv&opt=nointeraction&select=clearall";
-
-
     var u4="http://10.2.5.160/hclnode/single?appid=ec09cfab-eea7-4841-a8f2-7b007a5f47fc&obj=jZJSMec&opt=nointeraction&select=clearall";
 
     $scope.url2x = $sce.trustAsResourceUrl(u2);
